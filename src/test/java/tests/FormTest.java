@@ -13,11 +13,14 @@ public class FormTest {
         Configuration.browserSize = "1920x1080"; // разрешение, ну это понятно
         Configuration.pageLoadStrategy = "eager"; // чтоб не ждать загрузки всего сайта , картинок и т.д
         Configuration.baseUrl = "https://demoqa.com"; // выносим абсолютный адресс из опен
-        Configuration.timeout = 5000; // default 4000
+
     }
     @Test
-    void PracticeForm() {
+    void practiceFormTest() {
         open("/automation-practice-form");
+        executeJavaScript("$('#fixedban').remove()"); // убирает рекламу
+        executeJavaScript("$('footer').remove()"); // убирает рекламу
+
         $("#firstName").setValue("Maria");
         $("#lastName").setValue("Grishina");
         $("#userEmail").setValue("Mariann@inbox.com");
@@ -52,9 +55,8 @@ public class FormTest {
         $$(".table-responsive").findBy(text("Picture")).shouldHave(text("prt.JPG"));
         $$(".table-responsive").findBy(text("Address")).shouldHave(text("г. Пенза, ул. Щербакова 89"));
         $$(".table-responsive").findBy(text("State and City")).shouldHave(text("NCR Gurgaon"));
-
-        $("#closeLargeModal").click();
-        closeWindow();
+        $("#closeLargeModal").click();// закрытие формы
+        closeWindow();//закрытие страницы
 
 
     }
