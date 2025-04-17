@@ -1,5 +1,7 @@
 package tests;
 import com.codeborne.selenide.Configuration;
+import com.codeborne.selenide.Selenide;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
@@ -13,13 +15,19 @@ public class FormTest {
         Configuration.browserSize = "1920x1080"; // разрешение, ну это понятно
         Configuration.pageLoadStrategy = "eager"; // чтоб не ждать загрузки всего сайта , картинок и т.д
         Configuration.baseUrl = "https://demoqa.com"; // выносим абсолютный адресс из опен
-
     }
+    @AfterEach
+    void afterEach() {
+        Selenide.closeWebDriver();
+    }
+
+
     @Test
     void practiceFormTest() {
         open("/automation-practice-form");
         executeJavaScript("$('#fixedban').remove()"); // убирает рекламу
         executeJavaScript("$('footer').remove()"); // убирает рекламу
+
 
         $("#firstName").setValue("Maria");
         $("#lastName").setValue("Grishina");
@@ -56,8 +64,6 @@ public class FormTest {
         $$(".table-responsive").findBy(text("Address")).shouldHave(text("г. Пенза, ул. Щербакова 89"));
         $$(".table-responsive").findBy(text("State and City")).shouldHave(text("NCR Gurgaon"));
         $("#closeLargeModal").click();// закрытие формы
-        closeWindow();//закрытие страницы
-
 
     }
 }
