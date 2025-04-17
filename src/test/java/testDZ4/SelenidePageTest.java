@@ -27,8 +27,7 @@ void searchSelenideCodeTest(){
          $(byText( "3. Using JUnit5 extend test class:")).shouldBe(visible)
                  .parent().sibling(0)// возращаемся вверх , к родителю и исем вниз сестренский ближний (нулевой) элемент
                  .$("pre")
-                 .shouldHave(text(
-                         "@ExtendWith({SoftAssertsExtension.class}) class Tests {\n" +
+                 .shouldHave(text("@ExtendWith({SoftAssertsExtension.class}) class Tests {\n" +
                                  "  @Test\n" +
                                  "  void test() {\n" +
                                  "    Configuration.assertionMode = SOFT;\n" +
@@ -37,21 +36,18 @@ void searchSelenideCodeTest(){
                                  "    $(\"#second\").should(visible).click();\n" +
                                  "  }\n" +
                                  "}"
-                  ),
-                         text("@ExtendWith({SoftAssertsExtension.class})\n" +
-                                 "class Tests {\n" +
-                                 "  @Test\n" +
-                                 "  void test() {\n" +
-                                 "    Configuration.assertionMode = SOFT;\n" +
-                                 "    open(\"page.html\");\n" +
-                                 "\n" +
-                                 "    $(\"#first\").should(visible).click();\n" +
-                                 "    $(\"#second\").should(visible).click();\n" +
-                                 "  }\n" +
-                                 "}"));
-
-
-
-
+                  ));
+          $("#wiki-body").$(".markdown-body").shouldHave(
+                  text("@ExtendWith({SoftAssertsExtension.class})\n" +
+                          "class Tests {\n" +
+                          "  @Test\n" +
+                          "  void test() {\n" +
+                          "    Configuration.assertionMode = SOFT;\n" +
+                          "    open(\"page.html\");\n" +
+                          "\n" +
+                          "    $(\"#first\").should(visible).click();\n" +
+                          "    $(\"#second\").should(visible).click();\n" +
+                          "  }\n" +
+                          "}"));
       }
 }
