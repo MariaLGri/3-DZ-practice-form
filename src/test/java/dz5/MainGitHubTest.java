@@ -21,7 +21,6 @@ public class MainGitHubTest {
         $$("button").findBy(text("Solutions")).hover();
         $$("a[href=\"https://github.com/enterprise\"]").find(text("Enterprises")).click();
         $(".application-main ").$("h1#hero-section-brand-heading").shouldHave(text("The AI-powered"));
-
     }
 
 }

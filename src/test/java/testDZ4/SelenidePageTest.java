@@ -18,7 +18,7 @@ public class SelenidePageTest {
 }
       @Test
 void searchSelenideCodeTest(){
-          open("/selenide/selenide");
+          open("https://github.com");
 // ищем вкладку и кликаем на неё
          $(".UnderlineNav-body").$(byText("Wiki")).click();
           //Возращаем все элементы ссылок и ищем ту которая содержит текст, проверяем что текст видимый, кликаем
