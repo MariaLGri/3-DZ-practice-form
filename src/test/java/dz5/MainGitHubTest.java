@@ -24,4 +24,25 @@ public class MainGitHubTest {
         $(".application-main ").$("h1#hero-section-brand-heading").shouldHave(text("The AI-powered"));
     }
 
+    @Test
+         void DragDropTest(){
+         open("https://the-internet.herokuapp.com/drag_and_drop");
+         sleep(2000);
+         actions().moveToElement($("div#column-a")).clickAndHold().moveToElement($("div#column-b")).release().perform();
+         $("#column-b").shouldHave(text("A"));
+         $("#column-a").shouldHave(text("B"));
+         sleep(2000);
+
+
+    }
+
+    @Test
+    void DragDropTwoTest() {
+        open("https://the-internet.herokuapp.com/drag_and_drop");
+        sleep(2000);
+
+        $("#column-b").dragAndDrop($("#column-b")); // ошибка несовместимые типы: SelenideElement невозможно преобразовать в DragAndDropOptions
+
+    }
+
 }
