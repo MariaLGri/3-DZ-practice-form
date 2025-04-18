@@ -17,6 +17,7 @@ public class MainGitHubTest {
     }
     @Test
     void searchSelenideCodeTest(){
+
         open("https://github.com");
         $$("button").findBy(text("Solutions")).hover();
         $$("a[href=\"https://github.com/enterprise\"]").find(text("Enterprises")).click();
