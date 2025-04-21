@@ -8,15 +8,10 @@ import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selenide.*;
 
 
-public class MainGitHubTest {
-    @BeforeAll
-    static void beforeAll() {
-        Configuration.browserSize = "1920x1080"; // разрешение, ну это понятно
-        Configuration.pageLoadStrategy = "eager"; // чтоб не ждать загрузки всего сайта , картинок и т.д
+public class mainGitHubTest {
 
-    }
     @Test
-    void searchSelenideCodeTest(){
+    void searchSelenideCodeTest() {
 
         open("https://github.com");
         $$("button").findBy(text("Solutions")).hover();
@@ -25,13 +20,11 @@ public class MainGitHubTest {
     }
 
     @Test
-         void DragDropTest(){
-         open("https://the-internet.herokuapp.com/drag_and_drop");
-         sleep(2000);
-         actions().moveToElement($("div#column-a")).clickAndHold().moveToElement($("div#column-b")).release().perform();
-         $("#column-b").shouldHave(text("A"));
-         $("#column-a").shouldHave(text("B"));
-         sleep(2000);
+    void DragDropTest() {
+        open("https://the-internet.herokuapp.com/drag_and_drop");
+        actions().moveToElement($("div#column-a")).clickAndHold().moveToElement($("div#column-b")).release().perform();
+        $("#column-b").shouldHave(text("A"));
+        $("#column-a").shouldHave(text("B"));
 
 
     }
