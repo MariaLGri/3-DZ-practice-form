@@ -9,7 +9,7 @@ import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.Selenide.$;
 
-public class selenidePageTest {
+public class SelenidePageTest {
     @BeforeAll
     static void beforeConfig() {
         Configuration.pageLoadStrategy = "eager"; // чтоб не ждать загрузки всего сайта , картинок и т.д
@@ -20,7 +20,8 @@ public class selenidePageTest {
     void searchSelenideCodeTest() {
         open("https://github.com/selenide/selenide");
         $(".UnderlineNav-body").$(byText("Wiki")).click();
-        $("#wiki-body a[href=\"/selenide/selenide/wiki/SoftAssertions\"]").shouldBe(visible).click(); // ищем ссылку с атрибутом
+        $(".Box-row.wiki-more-pages-link").click();
+        $("a[href='/selenide/selenide/wiki/SoftAssertions']").shouldHave(text("Soft assertions")).shouldBe(visible).click();
         $(byText("3. Using JUnit5 extend test class:")).shouldBe(visible).parent().sibling(0).$("pre").shouldHave(text("""
                 @ExtendWith({SoftAssertsExtension.class})
                 class Tests {
