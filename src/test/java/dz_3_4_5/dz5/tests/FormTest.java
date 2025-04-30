@@ -1,4 +1,4 @@
-package tests;
+package dz_3_4_5.dz5.tests;
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
 import org.junit.jupiter.api.AfterEach;
@@ -40,7 +40,6 @@ public class FormTest {
         $(".react-datepicker__year-select").selectOption("1900"); //выбор года
         $$("div.react-datepicker__day").findBy(text("22")).click();// возрат полученной коллекции, ищем в ней 22 и кликаем на число даты, разобрать для понимания
 
-        $("#subjectsWrapper").click();
         $("#subjectsInput").setValue("a").pressEnter();
 
         $("label[for=hobbies-checkbox-1]").click();

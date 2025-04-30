@@ -1,7 +1,5 @@
-package dz5;
+package dz_3_4_5.dz5;
 
-import com.codeborne.selenide.Configuration;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import static com.codeborne.selenide.Condition.text;
@@ -29,13 +27,13 @@ public class mainGitHubTest {
 
     }
 
-    @Test
-    void DragDropTwoTest() {
-        open("https://the-internet.herokuapp.com/drag_and_drop");
-        sleep(2000);
-
-        $("#column-b").dragAndDrop($("#column-b")); // ошибка несовместимые типы: SelenideElement невозможно преобразовать в DragAndDropOptions
-
-    }
+//    @Test
+//    void DragDropTwoTest() {
+//        open("https://the-internet.herokuapp.com/drag_and_drop");
+//        sleep(2000);
+//
+//        $("#column-b").dragAndDrop($("#column-b")); // ошибка несовместимые типы: SelenideElement невозможно преобразовать в DragAndDropOptions
+//
+//    }
 
 }

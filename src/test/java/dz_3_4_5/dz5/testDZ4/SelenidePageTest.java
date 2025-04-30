@@ -1,4 +1,4 @@
-package testDZ4;
+package dz_3_4_5.dz5.testDZ4;
 
 import com.codeborne.selenide.Configuration;
 import org.junit.jupiter.api.BeforeAll;

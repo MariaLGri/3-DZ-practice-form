@@ -1,31 +1,33 @@
 package pages;
-
 import com.codeborne.selenide.SelenideElement;
 import pages.components.CalendarComponent;
-
-import static com.codeborne.selenide.Condition.text;
+import pages.components.TablCheckResultComponent;
+import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.Selenide.executeJavaScript;
 
 public class RegistrationPage {
-    private SelenideElement
+    private final SelenideElement
             firstNameInput = $("#firstName"),
             lastNameInput = $("#lastName"),
             emailInput = $("#userEmail"),
             genterWrapper = $("#genterWrapper"),
-            userNumber = $("#userNumber"),
-            calendarInput = $("#dateOfBirthInput");
-            CalendarComponent calendarComponent= new CalendarComponent();
-    SelenideElement subjectsInput =  $("#subjectsInput"),
+            userNumberInput = $("#userNumber"),
+            calendarInput = $("#dateOfBirthInput"),
+            subjectsInput =  $("#subjectsInput"),
             hobbies_1 =  $("label[for=hobbies-checkbox-1]" ),
             hobbies_2 =  $("label[for=hobbies-checkbox-2]" ),
-            hobbies_3 =  $(" label[for=hobbies-checkbox-3]");
+            hobbies_3 =  $(" label[for=hobbies-checkbox-3]"),
+            picture = $("#uploadPicture"),
+            address=  $("#currentAddress"),
 
+            selectState = $("#react-select-3-input"),
+            selectCiti = $("#react-select-4-input"),
+            buttonclick =$("#submit");
 
-
-
-public RegistrationPage openPage(){
+     CalendarComponent calendarComponent= new CalendarComponent();
+     public RegistrationPage openPage(){
     open("/automation-practice-form");
     executeJavaScript("$('#fixedban').remove()"); // убирает рекламу
     executeJavaScript("$('footer').remove()"); // убирает рекламу
@@ -49,7 +51,7 @@ public RegistrationPage openPage(){
         return this;
     }
     public RegistrationPage setUserNumber(String value) {
-        userNumber.setValue(value);
+        userNumberInput.setValue(value);
         return this;
     }
     public RegistrationPage setDataOfBirth(String day, String month, String year ) {
@@ -58,23 +60,45 @@ public RegistrationPage openPage(){
         calendarComponent.setData(day,month,year);
         return this;
     }
-
     public RegistrationPage setSubjects(String value) {
-        subjectsInput.setValue(value);
+        subjectsInput.setValue(value).pressEnter();
         return this;
     }
-
     public RegistrationPage setHobbies() {
         hobbies_1.click();
         hobbies_2.click();
         hobbies_3.click();
         return this;
-
-
-
-//проверки
-//    public RegistrationPage chekResalt (String key, String value){
-//        $$(".table-responsive").findBy(text(key)).shouldHave(text(value));
-//        return this;
-  }
+     }
+    public RegistrationPage addPicture(String imagePath){
+        picture.uploadFromClasspath(imagePath);
+        return this;
+        }
+    public RegistrationPage setAddress(String value){
+        address.setValue(value).pressEnter();
+        return this;
+    }
+    public RegistrationPage setState(String value){
+        selectState.setValue(value).pressEnter();
+        return this;
+    }
+    public RegistrationPage setCiti(String value){
+        selectCiti.setValue(value).pressEnter();
+        return this;
+    }
+    public RegistrationPage submitClick() {
+        buttonclick.click();
+        return this;
+    }
+//проверка
+     public RegistrationPage checkResult (String key, String expectedValue){
+        new TablCheckResultComponent().checkResultTab(key, expectedValue);
+         return this;
+      }
+      //негативная проверка правильности ввода номера телефона
+    public RegistrationPage chekFieldError(){
+        userNumberInput.shouldHave(cssClass("form-control"));
+        userNumberInput.shouldHave(cssValue("border-color", "rgb(220, 53, 69)"));
+        return this;
+}
 }
