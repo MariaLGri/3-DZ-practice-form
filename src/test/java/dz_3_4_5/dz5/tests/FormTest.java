@@ -40,7 +40,7 @@ public class FormTest {
         $(".react-datepicker__year-select").selectOption("1900"); //выбор года
         $$("div.react-datepicker__day").findBy(text("22")).click();// возрат полученной коллекции, ищем в ней 22 и кликаем на число даты, разобрать для понимания
 
-        $("#subjectsInput").setValue("a").pressEnter();
+        $("#subjectsInput").setValue("Math").pressEnter();
 
         $("label[for=hobbies-checkbox-1]").click();
         $("label[for=hobbies-checkbox-2]").click();
