@@ -15,12 +15,12 @@ public class RegFormNewTest extends TestBase {
                 .setGender("Other")
                 .setUserNumber("9603447567")
                 .setDataOfBirth("30", "April", "2025")
-                .setSubjects("a")
+                .setSubjects("Math")
                 .setHobbies()
                 .addPicture("prt.JPG")
                 .setAddress("г. Пенза, ул. Щербакова 89")
-                .setState("n")
-                .setCiti("a")
+                .setState("NCR")
+                .setCiti("Delhi")
                 .submitClick()
                 // проверки
                 .checkResult("Student Name", "Maria Grishina")
@@ -32,7 +32,7 @@ public class RegFormNewTest extends TestBase {
                 .checkResult("Hobbies", "Sports, Reading, Music")
                 .checkResult("Picture", "prt.JPG")
                 .checkResult("Address", "г. Пенза, ул. Щербакова 89")
-                .checkResult("State and City", "NCR Gurgaon");
+                .checkResult("State and City", "NCR Delhi");
 
     }
     @Test
