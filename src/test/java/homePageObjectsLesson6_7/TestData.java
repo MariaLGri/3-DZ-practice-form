@@ -1,6 +1,4 @@
-package homePageObjectsLesson6;
-
-import pages.RegistrationPage;
+package homePageObjectsLesson6_7;
 
 public class TestData {
     public static String

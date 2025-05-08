@@ -1,4 +1,4 @@
-package homePageObjectsLesson6;
+package homePageObjectsLesson6_7;
 
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
@@ -7,13 +7,13 @@ import org.junit.jupiter.api.BeforeAll;
 
 public class TestBase {
     @BeforeAll
-    static void installСonfigurations() {
+    static void installСonfiguration() {
         Configuration.browserSize = "1920x1080"; // разрешение, ну это понятно
         Configuration.pageLoadStrategy = "eager"; // чтоб не ждать загрузки всего сайта , картинок и т.д
         Configuration.baseUrl = "https://demoqa.com"; // выносим абсолютный адресс из опен
     }
     @AfterEach
-    void afterEachexEcute() {
+    void webDriverTearDown() {
         Selenide.closeWebDriver();
     }
 

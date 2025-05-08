@@ -1,12 +1,13 @@
-package homePageObjectsLesson6;
+package homePageObjectsLesson6_7;
 
 import org.junit.jupiter.api.Test;
 import pages.RegistrationPage;
 
-import static homePageObjectsLesson6.TestData.*;
+import static homePageObjectsLesson6_7.TestData.*;
 
 public class RegFormTestDataTest extends TestBase {
     RegistrationPage registrationPage = new RegistrationPage();
+
     @Test
     void regFormTest() {
         registrationPage

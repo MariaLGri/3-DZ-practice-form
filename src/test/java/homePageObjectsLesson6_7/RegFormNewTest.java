@@ -1,4 +1,4 @@
-package homePageObjectsLesson6;
+package homePageObjectsLesson6_7;
 
 import org.junit.jupiter.api.Test;
 import pages.RegistrationPage;
