@@ -1,5 +1,7 @@
 package homePageObjectsLesson6_7;
 
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import pages.RegistrationPage;
 import utils.RandomUtils;
@@ -7,7 +9,7 @@ public class RegFormNewRandomTest extends TestBase {
     RegistrationPage registrationPage = new RegistrationPage();
     RandomUtils randomUtils = new RandomUtils();
     @Test
-    void regFormTest() {
+        void regFormTest() {
              registrationPage
                 .openPage()
                 .setFirstName(randomUtils.firstNameF)
