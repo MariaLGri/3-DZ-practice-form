@@ -8,7 +8,6 @@ import org.junit.jupiter.params.provider.ValueSource;
 
 import static com.codeborne.selenide.CollectionCondition.sizeGreaterThan;
 import static com.codeborne.selenide.Condition.text;
-import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 
@@ -17,8 +16,6 @@ public class RegFormNewAnnotationsParamTest{
     static void installСonfig() {
        Configuration.browserSize = "1920x1080"; // разрешение, ну это понятно
         Configuration.pageLoadStrategy = "eager"; // чтоб не ждать загрузки всего сайта , картинок и т.д
-
-
     }
 
      //Параметризированные тесты
@@ -47,11 +44,12 @@ public class RegFormNewAnnotationsParamTest{
         $(".wdp-search-line-module__input").setValue(searchQueryTest).pressEnter();
         String actualValue = $(".wdp-search-line-module__input").getAttribute("value");
         System.out.println("Фактический ввод: " + actualValue);  // Должно совпадать с searchQueryTest
-        $(".search-filters-module__searchFiltersContentType").$(byText("Видео")).click();
+        $$(".search-filters-module__searchFiltersContentType button")
+                .findBy(text("Видео"))  // Находит первую кнопку с текстом "Видео"
+                .click();
         $$("div[aria-labelledby] a").shouldBe(sizeGreaterThan(0));
         $("div[aria-labelledby] a").getAttribute("href").contains(search1LinkTest);
         $(".wdp-card-description-module__description").shouldHave(text(searchTextTest));
-//        $("[svg class=\"svg-icon svg-icon--size-large svg-icon--IconClose\"]").click();
 
     }
 
