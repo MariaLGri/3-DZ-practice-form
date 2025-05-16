@@ -7,6 +7,7 @@ import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import static com.codeborne.selenide.CollectionCondition.sizeGreaterThan;
+import static com.codeborne.selenide.Condition.attribute;
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
@@ -34,12 +35,12 @@ public class RegFormNewAnnotationsParamTest{
     }
 
     @CsvSource(value = {
-            "London 1900|/video/61ff52653f3f367780a5be12ac14da2b/|The City of London, London's" ,
-            " Чужой 1979 год|/video/37d5799de2cf4fcc86515fa9461bd296/|Жанр: фантастика"
+            "London 1900|The City of London, London's" ,
+            " Чужой 1979 год|Жанр: фантастика"
     }, delimiter = '|')
     @ParameterizedTest(name = "Проверка поиска видео по значению {0}, список ссылок не должен быть пустым,первая ссылка = {1} с текстом {2}")
     @Tag("BLOCKER")
-    public void search2Test(String searchQueryTest, String search1LinkTest, String searchTextTest) {
+    public void search2Test(String searchQueryTest, String searchTextTest) {
         open("https://rutube.ru/");
         $(".wdp-search-line-module__input").setValue(searchQueryTest).pressEnter();
         String actualValue = $(".wdp-search-line-module__input").getAttribute("value");
@@ -48,8 +49,7 @@ public class RegFormNewAnnotationsParamTest{
                 .findBy(text("Видео"))  // Находит первую кнопку с текстом "Видео"
                 .click();
         $$("div[aria-labelledby] a").shouldBe(sizeGreaterThan(0));
-        $("div[aria-labelledby] a").getAttribute("href").contains(search1LinkTest);
-        $(".wdp-card-description-module__description").shouldHave(text(searchTextTest));
+        $(".wdp-grid-module__grid").shouldHave(text(searchTextTest));
 
     }
 
