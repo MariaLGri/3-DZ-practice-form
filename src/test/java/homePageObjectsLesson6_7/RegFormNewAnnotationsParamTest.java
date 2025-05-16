@@ -28,7 +28,7 @@ public class RegFormNewAnnotationsParamTest{
    void search1Test (String search1) {
         open("https://rutube.ru/");
         $(".wdp-search-line-module__input").setValue(search1).pressEnter();
-        $(byText("Видео")).click();
+        $(".search-filters-module__searchFilters").$(byText("Видео")).click();
         $$(".wdp-grid-module__gridWrapper div[aria-labelledby]").shouldBe(sizeGreaterThan(0));
         sleep(3000);
 
@@ -45,9 +45,7 @@ public class RegFormNewAnnotationsParamTest{
         $(".wdp-search-line-module__input").setValue(searchQueryTest).pressEnter();
         String actualValue = $(".wdp-search-line-module__input").getAttribute("value");
         System.out.println("Фактический ввод: " + actualValue);  // Должно совпадать с searchQueryTest
-        $$(".search-filters-module__searchFiltersContentType button")
-                .findBy(text("Видео"))  // Находит первую кнопку с текстом "Видео"
-                .click();
+        $(".search-filters-module__searchFilters").$(byText("Видео")).click();
         $$("div[aria-labelledby] a").shouldBe(sizeGreaterThan(0));
         $(".wdp-grid-module__grid").shouldHave(text(searchTextTest));
 
