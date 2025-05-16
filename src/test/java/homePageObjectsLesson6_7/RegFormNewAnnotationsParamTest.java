@@ -1,14 +1,11 @@
 package homePageObjectsLesson6_7;
-
 import com.codeborne.selenide.Configuration;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvFileSource;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
-
 import static com.codeborne.selenide.CollectionCondition.sizeGreaterThan;
-import static com.codeborne.selenide.Condition.attribute;
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
@@ -53,7 +50,7 @@ public class RegFormNewAnnotationsParamTest{
     }
 
     @CsvFileSource(resources = "/testData/searchFilm.csv", delimiter = '|')
-    @ParameterizedTest(name = "Для поискового запроса {0}- в результате поиска должна быть книга - {1}")
+    @ParameterizedTest(name = "Проверка поиска видео по значению {0}, список ссылок не должен быть пустым, в одном из описаний должен содержаться текст {1}(из файла .csv)")
     @Tag("BLOCKER")
 
     public void search3Test(String searchQueryTest, String searchTextTest) {
