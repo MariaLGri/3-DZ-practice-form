@@ -34,7 +34,7 @@ public class RegFormNewAnnotationsParamTest{
 
     @CsvSource(value = {
             "London 1900|The City of London, London's" ,
-            " Чужой 1979 год|Жанр: фантастика"
+            " Чужой 1979 год|Чужой (1979) / Alien (расширенная версия)"
     }, delimiter = '|')
     @ParameterizedTest(name = "Проверка поиска видео по значению {0}, список ссылок не должен быть пустым, в одном из описаний должен содержаться текст {1}")
     @Tag("BLOCKER")
