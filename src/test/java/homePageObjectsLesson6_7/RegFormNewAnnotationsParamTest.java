@@ -3,6 +3,7 @@ package homePageObjectsLesson6_7;
 import com.codeborne.selenide.Configuration;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvFileSource;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
@@ -38,9 +39,24 @@ public class RegFormNewAnnotationsParamTest{
             "London 1900|The City of London, London's" ,
             " Чужой 1979 год|Жанр: фантастика"
     }, delimiter = '|')
-    @ParameterizedTest(name = "Проверка поиска видео по значению {0}, список ссылок не должен быть пустым,первая ссылка = {1} с текстом {2}")
+    @ParameterizedTest(name = "Проверка поиска видео по значению {0}, список ссылок не должен быть пустым, в одном из описаний должен содержаться текст {1}")
     @Tag("BLOCKER")
     public void search2Test(String searchQueryTest, String searchTextTest) {
+        open("https://rutube.ru/");
+        $(".wdp-search-line-module__input").setValue(searchQueryTest).pressEnter();
+        String actualValue = $(".wdp-search-line-module__input").getAttribute("value");
+        System.out.println("Фактический ввод: " + actualValue);  // Должно совпадать с searchQueryTest
+        $(".search-filters-module__searchFilters").$(byText("Видео")).click();
+        $$("div[aria-labelledby] a").shouldBe(sizeGreaterThan(0));
+        $(".wdp-grid-module__grid").shouldHave(text(searchTextTest));
+
+    }
+
+    @CsvFileSource(resources = "/testData/searchFilm.csv", delimiter = '|')
+    @ParameterizedTest(name = "Для поискового запроса {0}- в результате поиска должна быть книга - {1}")
+    @Tag("BLOCKER")
+
+    public void search3Test(String searchQueryTest, String searchTextTest) {
         open("https://rutube.ru/");
         $(".wdp-search-line-module__input").setValue(searchQueryTest).pressEnter();
         String actualValue = $(".wdp-search-line-module__input").getAttribute("value");
