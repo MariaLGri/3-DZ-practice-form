@@ -1,8 +1,9 @@
 package homePageObjectsLesson6_7;
 
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import pages.RegistrationPage;
-
+@Tag("first")
 public class RegFormNewTest extends TestBase {
     RegistrationPage registrationPage = new RegistrationPage();
     @Test

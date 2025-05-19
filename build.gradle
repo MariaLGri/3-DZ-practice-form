@@ -18,9 +18,21 @@ dependencies {
 
 }
 
-test {
-    systemProperties += systemProperties
+tasks.withType(Test) {
     useJUnitPlatform()
+
+    testLogging {
+        lifecycle {
+            events "started", "skipped", "failed", "standard_error", "standard_out"
+            exceptionFormat "short"
+        }
+    }
+}
+
+task first_test(type: Test) {
+    useJUnitPlatform {
+        includeTags("first")
+    }
 }
 
 compileJava {
