@@ -1,7 +1,21 @@
 plugins {
     id 'java-library'
+    id 'io.qameta.allure' version '2.11.2'
 }
 
+allure {
+    report {
+        version.set('2.21.0')
+    }
+    adapter { // отвечает за появление папочки build/allure-results
+        aspectjWeaver.set(true) //обработка аннотации @Step
+        frameworks {
+            junit5 { //название фреймворка
+                adapterVersion.set('2.21.0') //версия интеграции фреймворка и Allure
+            }
+        }
+    }
+}
 repositories {
     mavenCentral()
 }
@@ -18,9 +32,21 @@ dependencies {
 
 }
 
-test {
-    systemProperties += systemProperties
+tasks.withType(Test) {
     useJUnitPlatform()
+
+    testLogging {
+        lifecycle {
+            events "started", "skipped", "failed", "standard_error", "standard_out"
+            exceptionFormat "short"
+        }
+    }
+}
+
+task firsti_test(type: Test) {
+    useJUnitPlatform {
+        includeTags("simple")
+    }
 }
 
 compileJava {
