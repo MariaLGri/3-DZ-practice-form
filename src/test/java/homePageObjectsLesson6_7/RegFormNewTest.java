@@ -7,7 +7,7 @@ import pages.RegistrationPage;
 public class RegFormNewTest extends TestBase {
     RegistrationPage registrationPage = new RegistrationPage();
     @Test
-    @Tag("first")
+
     void regFormTest() {
         registrationPage
                 .openPage()
