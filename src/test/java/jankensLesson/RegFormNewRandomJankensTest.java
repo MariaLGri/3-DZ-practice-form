@@ -8,7 +8,7 @@ import utils.RandomUtils;
 
 import static io.qameta.allure.Allure.step;
 
-public class RegFormNewRandomJankensTest extends TestBase {
+public class RegFormNewRandomJankensTest extends TestBase2 {
     RegistrationPage registrationPage = new RegistrationPage();
     RandomUtils randomUtils = new RandomUtils();
     @Test

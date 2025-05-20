@@ -1,7 +1,6 @@
 package jankensLesson;
 
 import com.codeborne.selenide.Configuration;
-import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.logevents.SelenideLogger;
 import helpers.Attach;
 import io.qameta.allure.selenide.AllureSelenide;
@@ -11,7 +10,7 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 
 import java.util.Map;
 
-public class TestBase {
+public class TestBase2 {
     @BeforeAll
     static void installСonfiguration() {
         Configuration.browserSize = "1920x1080"; // разрешение, ну это понятно
