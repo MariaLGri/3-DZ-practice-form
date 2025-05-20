@@ -1,30 +1,40 @@
 package dz_3_4_5.dz5.tests;
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
+import com.codeborne.selenide.WebDriverRunner;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
+import org.openqa.selenium.chrome.ChromeOptions;
+
+import java.util.UUID;
 
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
-
+@Tag("first")
 public class FormTest {
     @BeforeAll
      static void beforeAll() {
         Configuration.browserSize = "1920x1080"; // разрешение, ну это понятно
         Configuration.pageLoadStrategy = "eager"; // чтоб не ждать загрузки всего сайта , картинок и т.д
         Configuration.baseUrl = "https://demoqa.com"; // выносим абсолютный адресс из опен
+        Configuration.browserCapabilities = new ChromeOptions()
+                .addArguments(
+                        "--user-data-dir=/tmp/chrome-profile-" + UUID.randomUUID(),
+                        "--disable-dev-shm-usage",
+                        "--window-size=1920,1080"
+                );
     }
     @AfterEach
     void afterEach() {
         Selenide.closeWebDriver();
+        WebDriverRunner.closeWebDriver();
     }
 
 
     @Test
-    @Tag("first")
     void practiceFormTest() {
         open("/automation-practice-form");
         executeJavaScript("$('#fixedban').remove()"); // убирает рекламу
