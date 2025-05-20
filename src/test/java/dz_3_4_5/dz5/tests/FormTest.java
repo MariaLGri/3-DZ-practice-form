@@ -26,6 +26,7 @@ public class FormTest {
                         "--disable-dev-shm-usage",
                         "--window-size=1920,1080"
                 );
+        Configuration.remote = "https://user1:1234@selenoid.autotests.cloud/wd/hub";
     }
     @AfterEach
     void afterEach() {
