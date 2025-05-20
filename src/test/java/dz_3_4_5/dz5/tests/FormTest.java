@@ -13,6 +13,8 @@ import java.util.UUID;
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
+import static io.qameta.allure.Allure.step;
+
 @Tag("first")
 public class FormTest {
     @BeforeAll
@@ -37,10 +39,12 @@ public class FormTest {
 
     @Test
     void practiceFormTest() {
-        open("/automation-practice-form");
-        executeJavaScript("$('#fixedban').remove()"); // убирает рекламу
-        executeJavaScript("$('footer').remove()"); // убирает рекламу
-
+        step("Open form", () -> {
+            open("/automation-practice-form");
+            $(".practice-form-wrapper").shouldHave(text("Student Registration Form"));
+            executeJavaScript("$('#fixedban').remove()");
+            executeJavaScript("$('footer').remove()");
+        });
 
         $("#firstName").setValue("Maria");
         $("#lastName").setValue("Grishina");
