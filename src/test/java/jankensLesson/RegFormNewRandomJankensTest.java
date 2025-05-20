@@ -1,4 +1,5 @@
-package homePageObjectsLesson6_7;
+package jankensLesson;
+import homePageObjectsLesson6_7.TestBase;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
@@ -7,12 +8,12 @@ import utils.RandomUtils;
 
 import static io.qameta.allure.Allure.step;
 
-public class RegFormNewRandomTest extends TestBase {
+public class RegFormNewRandomJankensTest extends TestBase {
     RegistrationPage registrationPage = new RegistrationPage();
     RandomUtils randomUtils = new RandomUtils();
     @Test
     @DisplayName("Проверка регистрации на форме")
-    @Tag("first")
+    //@Tag("first")
         void regFormTest()
     {
 
@@ -48,28 +49,6 @@ public class RegFormNewRandomTest extends TestBase {
                 .checkResult("Address", randomUtils.streetAddress)
                 .checkResult("State and City", randomUtils.state +" "+randomUtils.city);
         });
-    }
-    @Test
-    void regFormMainTest() {
-        registrationPage
-                .openPage()
-                .setFirstName(randomUtils.firstNameF)
-                .setLastName(randomUtils.lastNameF)
-                .setGender(randomUtils.genterWrapper)
-                .setUserNumber(randomUtils.ruPhone)
-                .submitClick()
-                .checkResult("Student Name", randomUtils.firstNameF+" "+randomUtils.lastNameF)
-                .checkResult("Gender", randomUtils.genterWrapper)
-                .checkResult("Mobile", randomUtils.ruPhone);
-    }
-    @Test
-        // неверный ввод номера телефона
-    void regFormNegativeTest() {
-        registrationPage
-                .openPage()
-                .setUserNumber(randomUtils.randomLetters)
-                .submitClick()
-                .chekFieldError();
     }
 }
 
