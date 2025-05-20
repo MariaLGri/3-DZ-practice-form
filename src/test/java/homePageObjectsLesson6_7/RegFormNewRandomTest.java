@@ -12,7 +12,7 @@ public class RegFormNewRandomTest extends TestBase {
     RandomUtils randomUtils = new RandomUtils();
     @Test
     @DisplayName("Проверка регистрации на форме")
-    @Tag("first")
+   // @Tag("first")
         void regFormTest()
     {
 

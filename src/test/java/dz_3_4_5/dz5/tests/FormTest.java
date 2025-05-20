@@ -2,17 +2,13 @@ package dz_3_4_5.dz5.tests;
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.WebDriverRunner;
-import com.codeborne.selenide.logevents.SelenideLogger;
-import io.qameta.allure.selenide.AllureSelenide;
-import org.junit.jupiter.api.*;
-import org.openqa.selenium.chrome.ChromeOptions;
 
-import java.util.UUID;
+import org.junit.jupiter.api.*;
 
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
-import static io.qameta.allure.Allure.step;
+
 
 
 public class FormTest {
@@ -32,7 +28,7 @@ public class FormTest {
 
 
     @Test
-    @DisplayName ("тест регистрации")
+   // @DisplayName ("тест регистрации")
 
     void practiceFormTest() {
 //        step("Open form", () -> {
