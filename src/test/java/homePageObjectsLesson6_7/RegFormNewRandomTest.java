@@ -1,15 +1,22 @@
 package homePageObjectsLesson6_7;
-
-import org.junit.jupiter.api.Disabled;
-import org.junit.jupiter.api.DisplayName;
+import com.codeborne.selenide.logevents.SelenideLogger;
+import io.qameta.allure.selenide.AllureSelenide;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import pages.RegistrationPage;
 import utils.RandomUtils;
+
+import static io.qameta.allure.Allure.step;
+
 public class RegFormNewRandomTest extends TestBase {
     RegistrationPage registrationPage = new RegistrationPage();
     RandomUtils randomUtils = new RandomUtils();
     @Test
-        void regFormTest() {
+    @Tag("first")
+        void regFormTest()
+    {
+        SelenideLogger.addListener("allure", new AllureSelenide());
+        step("Открытие и заполнение формы", () -> {
              registrationPage
                 .openPage()
                 .setFirstName(randomUtils.firstNameF)
@@ -24,9 +31,10 @@ public class RegFormNewRandomTest extends TestBase {
                 .setAddress(randomUtils.streetAddress)
                 .setState(randomUtils.state)
                 .setCiti(randomUtils.city)
-                .submitClick()
+                .submitClick();
+        });
                 // проверки
-                .checkResult("Student Name", randomUtils.firstNameF+" "+randomUtils.lastNameF)
+        registrationPage .checkResult("Student Name", randomUtils.firstNameF+" "+randomUtils.lastNameF)
                 .checkResult("Student Email", randomUtils.userEmailF)
                 .checkResult("Gender", randomUtils.genterWrapper)
                 .checkResult("Mobile", randomUtils.ruPhone)
