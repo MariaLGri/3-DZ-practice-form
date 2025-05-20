@@ -43,6 +43,7 @@ public class FormTest {
     @Test
 
     void practiceFormTest() {
+        SelenideLogger.addListener("allure", new AllureSelenide());
         step("Open form", () -> {
             open("/automation-practice-form");
             $(".practice-form-wrapper").shouldHave(text("Student Registration Form"));
