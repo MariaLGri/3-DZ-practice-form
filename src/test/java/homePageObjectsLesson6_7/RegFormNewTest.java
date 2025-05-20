@@ -17,7 +17,7 @@ public class RegFormNewTest extends TestBase {
                 .setDataOfBirth("30", "April", "2025")
                 .setSubjects("Math")
                 .setHobbies()
-                .addPicture("prt.JPG")
+                .addPicture("prt.png")
                 .setAddress("г. Пенза, ул. Щербакова 89")
                 .setState("NCR")
                 .setCiti("Delhi")
@@ -30,7 +30,7 @@ public class RegFormNewTest extends TestBase {
                 .checkResult("Date of Birth", "30 April,2025")
                 .checkResult("Subjects", "Maths")
                 .checkResult("Hobbies", "Sports, Reading, Music")
-                .checkResult("Picture", "prt.JPG")
+                .checkResult("Picture", "prt.png")
                 .checkResult("Address", "г. Пенза, ул. Щербакова 89")
                 .checkResult("State and City", "NCR Delhi");
 

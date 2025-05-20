@@ -48,7 +48,7 @@ public class FormTest {
         $("label[for=hobbies-checkbox-1]").click();
         $("label[for=hobbies-checkbox-2]").click();
         $("label[for=hobbies-checkbox-3]").click();
-        $("#uploadPicture").uploadFromClasspath("prt.JPG");
+        $("#uploadPicture").uploadFromClasspath("prt.png");
         $("#currentAddress").setValue("г. Пенза, ул. Щербакова 89").pressEnter();
 
         $("#react-select-3-input").setValue("n").pressEnter();
@@ -61,7 +61,7 @@ public class FormTest {
         $$(".table-responsive").findBy(text("Date of Birth")).shouldHave(text("22 May,1900"));
         $$(".table-responsive").findBy(text("Subjects")).shouldHave(text("Maths"));
         $$(".table-responsive").findBy(text("Hobbies")).shouldHave(text("Sports, Reading, Music"));
-        $$(".table-responsive").findBy(text("Picture")).shouldHave(text("prt.JPG"));
+        $$(".table-responsive").findBy(text("Picture")).shouldHave(text("prt.png"));
         $$(".table-responsive").findBy(text("Address")).shouldHave(text("г. Пенза, ул. Щербакова 89"));
         $$(".table-responsive").findBy(text("State and City")).shouldHave(text("NCR Gurgaon"));
         $("#closeLargeModal").click();// закрытие формы

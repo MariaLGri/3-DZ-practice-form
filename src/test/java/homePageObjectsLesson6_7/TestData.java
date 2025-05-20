@@ -13,7 +13,7 @@ public class TestData {
             dataOfBirthYear="2000",
             subjects ="Math",
 
-           picture="prt.JPG",
+           picture= "prt.png",
                 address = "г. Пенза, ул. Щербакова 89",
                state="NCR",
                 citi="Delhi";
