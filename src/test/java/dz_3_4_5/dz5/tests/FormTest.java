@@ -24,13 +24,7 @@ public class FormTest {
         Configuration.browserSize = "1920x1080"; // разрешение, ну это понятно
         Configuration.pageLoadStrategy = "eager"; // чтоб не ждать загрузки всего сайта , картинок и т.д
         Configuration.baseUrl = "https://demoqa.com"; // выносим абсолютный адресс из опен
-        Configuration.browserCapabilities = new ChromeOptions()
-                .addArguments(
-                        "--user-data-dir=/tmp/chrome-profile-" + UUID.randomUUID(),
-                        "--disable-dev-shm-usage",
-                        "--window-size=1920,1080"
-                );
-        Configuration.remote = "https://user1:1234@selenoid.autotests.cloud/wd/hub";
+        Configuration.remote = "https://user1:1234@selenoid.autotests.cloud/wd/hub"; //хром на стороннем сервисе
         SelenideLogger.addListener("AllureSelenide", new AllureSelenide());
     }
     @AfterEach
