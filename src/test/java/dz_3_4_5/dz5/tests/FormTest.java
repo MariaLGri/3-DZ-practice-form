@@ -20,7 +20,7 @@ import static io.qameta.allure.Allure.step;
 @Tag("first")
 public class FormTest {
     @BeforeAll
-     static void beforeAll() {
+     static void changeConfiguration() {
         Configuration.browserSize = "1920x1080"; // разрешение, ну это понятно
         Configuration.pageLoadStrategy = "eager"; // чтоб не ждать загрузки всего сайта , картинок и т.д
         Configuration.baseUrl = "https://demoqa.com"; // выносим абсолютный адресс из опен
@@ -41,6 +41,7 @@ public class FormTest {
 
 
     @Test
+
     void practiceFormTest() {
         step("Open form", () -> {
             open("/automation-practice-form");
