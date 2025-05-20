@@ -1,5 +1,4 @@
-package jankensLesson;
-import homePageObjectsLesson6_7.TestBase;
+package jenkinsLesson;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
@@ -8,7 +7,7 @@ import utils.RandomUtils;
 
 import static io.qameta.allure.Allure.step;
 
-public class RegFormNewRandomJankensTest extends TestBase2 {
+public class RegFormNewRandomJenktnsTest extends TestBase2 {
     RegistrationPage registrationPage = new RegistrationPage();
     RandomUtils randomUtils = new RandomUtils();
     @Test
