@@ -37,13 +37,12 @@ public class FormTest {
     @Test
 
     void practiceFormTest() {
-        SelenideLogger.addListener("allure", new AllureSelenide());
         step("Open form", () -> {
-            open("/automation-practice-form");
-            $(".practice-form-wrapper").shouldHave(text("Student Registration Form"));
-            executeJavaScript("$('#fixedban').remove()");
-            executeJavaScript("$('footer').remove()");
-        });
+        open("/automation-practice-form");
+        $(".practice-form-wrapper").shouldHave(text("Student Registration Form"));
+        executeJavaScript("$('#fixedban').remove()");
+        executeJavaScript("$('footer').remove()");
+    });
 
         $("#firstName").setValue("Maria");
         $("#lastName").setValue("Grishina");
