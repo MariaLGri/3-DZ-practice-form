@@ -17,8 +17,6 @@ public class FormTest {
         Configuration.browserSize = "1920x1080"; // разрешение, ну это понятно
         Configuration.pageLoadStrategy = "eager"; // чтоб не ждать загрузки всего сайта , картинок и т.д
         Configuration.baseUrl = "https://demoqa.com"; // выносим абсолютный адресс из опен
-//        Configuration.remote = "https://user1:1234@selenoid.autotests.cloud/wd/hub"; //хром на стороннем сервисе
-//        SelenideLogger.addListener("AllureSelenide", new AllureSelenide());
     }
     @AfterEach
     void afterEach() {
@@ -28,16 +26,12 @@ public class FormTest {
 
 
     @Test
-   // @DisplayName ("тест регистрации")
-
-    void practiceFormTest() {
-//        step("Open form", () -> {
+      void practiceFormTest() {
         open("/automation-practice-form");
         $(".practice-form-wrapper").shouldHave(text("Student Registration Form"));
         executeJavaScript("$('#fixedban').remove()");
         executeJavaScript("$('footer').remove()");
-//    });
-//        step("Fill form", () -> {
+
         $("#firstName").setValue("Maria");
         $("#lastName").setValue("Grishina");
         $("#userEmail").setValue("Mariann@inbox.com");
@@ -60,8 +54,6 @@ public class FormTest {
         $("#react-select-3-input").setValue("n").pressEnter();
         $("#react-select-4-input").setValue("a").pressEnter();
         $("#submit").click();
-//        });
-//        step("Verify results", () -> {
         $$(".table-responsive").findBy(text("Student Name")).shouldHave(text("Maria Grishina")); // возврат, поиск, проверка (сложно!!!)
         $$(".table-responsive").findBy(text("Student Email")).shouldHave(text("Mariann@inbox.com"));
         $$(".table-responsive").findBy(text("Gender")).shouldHave(text("Other"));
@@ -73,6 +65,6 @@ public class FormTest {
         $$(".table-responsive").findBy(text("Address")).shouldHave(text("г. Пенза, ул. Щербакова 89"));
         $$(".table-responsive").findBy(text("State and City")).shouldHave(text("NCR Gurgaon"));
         $("#closeLargeModal").click();// закрытие формы
-//        });
+
     }
 }
