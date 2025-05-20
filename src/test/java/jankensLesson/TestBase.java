@@ -19,7 +19,7 @@ public class TestBase {
         Configuration.baseUrl = "https://demoqa.com"; // выносим абсолютный адресс из опен
        Configuration.remote = "https://user1:1234@selenoid.autotests.cloud/wd/hub"; //хром на стороннем сервисе
         SelenideLogger.addListener("AllureSelenide", new AllureSelenide());
-
+// добавить видеозапись с экрана
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("selenoid:options", Map.<String, Object>of(
                 "enableVNC", true,
