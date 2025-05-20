@@ -1,6 +1,7 @@
 package homePageObjectsLesson6_7;
 import com.codeborne.selenide.logevents.SelenideLogger;
 import io.qameta.allure.selenide.AllureSelenide;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import pages.RegistrationPage;
@@ -12,14 +13,17 @@ public class RegFormNewRandomTest extends TestBase {
     RegistrationPage registrationPage = new RegistrationPage();
     RandomUtils randomUtils = new RandomUtils();
     @Test
+    @DisplayName("Проверка регистрации на форме")
     @Tag("first")
         void regFormTest()
     {
         SelenideLogger.addListener("allure", new AllureSelenide());
-        step("Открытие и заполнение формы", () -> {
+        step("Открытие формы регистрации", () -> {
              registrationPage
-                .openPage()
-                .setFirstName(randomUtils.firstNameF)
+                .openPage();
+        });
+            step("Заполнение формы ", () -> {
+                registrationPage .setFirstName(randomUtils.firstNameF)
                 .setLastName(randomUtils.lastNameF)
                 .setEmail(randomUtils.userEmailF)
                 .setGender(randomUtils.genterWrapper)
@@ -34,6 +38,7 @@ public class RegFormNewRandomTest extends TestBase {
                 .submitClick();
         });
                 // проверки
+        step("Проверяем корректность заполнения формы", () -> {
         registrationPage .checkResult("Student Name", randomUtils.firstNameF+" "+randomUtils.lastNameF)
                 .checkResult("Student Email", randomUtils.userEmailF)
                 .checkResult("Gender", randomUtils.genterWrapper)
@@ -44,7 +49,7 @@ public class RegFormNewRandomTest extends TestBase {
                 .checkResult("Picture", randomUtils.piktureF)
                 .checkResult("Address", randomUtils.streetAddress)
                 .checkResult("State and City", randomUtils.state +" "+randomUtils.city);
-
+        });
     }
     @Test
     void regFormMainTest() {
