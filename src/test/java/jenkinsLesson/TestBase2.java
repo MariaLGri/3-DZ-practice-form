@@ -38,9 +38,9 @@ public class TestBase2 {
         Configuration.pageLoadStrategy = "eager";
         Configuration.timeout = 10000;
         Configuration.remote = String.format("https://%s:%s@%s/wd/hub",
-                selenoidLogin,
-                selenoidPassword,
-                selenoidUrl);
+                System.getProperty("selenoidUserLogin"),
+                System.getProperty("selenoidUserPassword"),
+                System.getProperty("selenoidUrl") );
 
 
         DesiredCapabilities capabilities = new DesiredCapabilities();
