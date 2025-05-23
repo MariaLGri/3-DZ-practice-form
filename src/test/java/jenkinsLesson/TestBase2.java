@@ -6,9 +6,11 @@ import helpers.Attach;
 import io.qameta.allure.selenide.AllureSelenide;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
 import java.util.Map;
+import java.util.UUID;
 
 public class TestBase2 {
 
@@ -20,31 +22,38 @@ public class TestBase2 {
     static String browserVersion = System.getProperty("browserVersion", "127.0");
     static String browserSize = System.getProperty("browserSize", "1920x1080");
     @BeforeAll
-    public static void installСonfiguration() {
+    static void installСonfiguration() {
 
+        String selenoidHost = System.getProperty("selenoid_host", "selenoid.autotests.cloud");
+        String selenoidLogin = System.getProperty("selenoid_login", "user1");
+        String selenoidPassword = System.getProperty("selenoid_password", "1234");
+        String browser = System.getProperty("browser", "chrome");
+        String browserVersion = System.getProperty("browserVersion", "127.0");
+        String screenResolution = System.getProperty("screenResolution", "1920x1080");
+
+        Configuration.baseUrl = "https://demoqa.com";
+        Configuration.browserSize = screenResolution;
         Configuration.browser = browser;
         Configuration.browserVersion = browserVersion;
-        Configuration.browserSize = browserSize;
+        Configuration.pageLoadStrategy = "eager";
+        Configuration.timeout = 10000;
+        Configuration.remote = String.format("https://%s:%s@%s/wd/hub",
+                selenoidLogin,
+                selenoidPassword,
+                selenoidHost);
 
-        Configuration.pageLoadStrategy = "eager"; // чтоб не ждать загрузки всего сайта , картинок и т.д
-        Configuration.baseUrl = "https://demoqa.com"; // выносим абсолютный адресс из опен
-        //хром на стороннем сервисе
-        Configuration.remote = String.format(
-                "https://%s:%s@%s/wd/hub",
-                System.getProperty("selenoidUserLogin"),
-                System.getProperty("selenoidUserPassword"),
-                System.getProperty("selenoidUrl")
-        );
-        //Configuration.remote = "https://" + selenoidUserLogin + ":" + selenoidUserPassword +"@" + selenoidUrl + "/wd/hub";
-        SelenideLogger.addListener("AllureSelenide", new AllureSelenide());
-// добавить видеозапись с экрана
+
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("selenoid:options", Map.<String, Object>of(
                 "enableVNC", true,
                 "enableVideo", true
         ));
         Configuration.browserCapabilities = capabilities;
+
+        SelenideLogger.addListener("AllureSelenide", new AllureSelenide());
     }
+
+
     @AfterEach
 
     void addAttachments() {
