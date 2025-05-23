@@ -8,7 +8,7 @@ import utils.RandomUtils;
 import static io.qameta.allure.Allure.step;
 
 public class RegFormNewRandomJenktns2ParamrtrTest extends TestBase2 {
-    RegistrationPage registrationPage2 = new RegistrationPage();
+    RegistrationPage registrationPage = new RegistrationPage();
     RandomUtils randomUtils = new RandomUtils();
 
 
@@ -19,11 +19,11 @@ public class RegFormNewRandomJenktns2ParamrtrTest extends TestBase2 {
     {
 
         step("Открытие формы регистрации", () -> {
-             registrationPage2
+             registrationPage
                 .openPage();
         });
             step("Заполнение формы ", () -> {
-                registrationPage2 .setFirstName(randomUtils.firstNameF)
+                registrationPage .setFirstName(randomUtils.firstNameF)
                 .setLastName(randomUtils.lastNameF)
                 .setEmail(randomUtils.userEmailF)
                 .setGender(randomUtils.genterWrapper)
@@ -39,7 +39,7 @@ public class RegFormNewRandomJenktns2ParamrtrTest extends TestBase2 {
         });
                 // проверки
         step("Проверяем корректность заполнения формы", () -> {
-        registrationPage2 .checkResult("Student Name", randomUtils.firstNameF+" "+randomUtils.lastNameF)
+        registrationPage .checkResult("Student Name", randomUtils.firstNameF+" "+randomUtils.lastNameF)
                 .checkResult("Student Email", randomUtils.userEmailF)
                 .checkResult("Gender", randomUtils.genterWrapper)
                 .checkResult("Mobile", randomUtils.ruPhone)
