@@ -35,15 +35,15 @@ public class RegistrationPage {
 }
 
     public RegistrationPage setFirstName(String value){
-        firstNameInput.setValue(value);
+        firstNameInput.scrollIntoView(true).setValue(value);
         return this;
     }
     public RegistrationPage setLastName(String value){
-    lastNameInput.setValue(value);
+    lastNameInput.scrollIntoView(true).setValue(value);
         return this;
     }
     public RegistrationPage setEmail(String value){
-        emailInput.setValue(value);
+        emailInput.scrollIntoView(true).setValue(value);
         return this;
     }
     public RegistrationPage setGender(String value){
@@ -51,7 +51,7 @@ public class RegistrationPage {
         return this;
     }
     public RegistrationPage setUserNumber(String value) {
-        userNumberInput.setValue(value);
+        userNumberInput.scrollIntoView(true).setValue(value);
         return this;
     }
     public RegistrationPage setDataOfBirth(String day, String month, String year ) {
@@ -75,19 +75,19 @@ public class RegistrationPage {
         return this;
         }
     public RegistrationPage setAddress(String value){
-        address.setValue(value).pressEnter();
+        address.scrollIntoView(true).setValue(value).pressEnter();
         return this;
     }
     public RegistrationPage setState(String value){
-        selectState.setValue(value).pressEnter();
+        selectState.scrollIntoView(true).setValue(value).pressEnter();
         return this;
     }
     public RegistrationPage setCiti(String value){
-        selectCiti.setValue(value).pressEnter();
+        selectCiti.scrollIntoView(true).setValue(value).pressEnter();
         return this;
     }
     public RegistrationPage submitClick() {
-        buttonclick.click();
+        buttonclick.scrollIntoView(true).click();
         return this;
     }
 //проверка

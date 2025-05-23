@@ -13,20 +13,8 @@ import java.util.Map;
 import java.util.UUID;
 
 public class TestBase2 {
-
-    static String selenoidUserLogin = System.getProperty("selenoidUserLogin", "user1");
-    static String selenoidUserPassword = System.getProperty("selenoidUserPassword", "1234");
-    static String selenoidUrl = System.getProperty(
-            "selenoidUrl", "selenoid.autotests.cloud");
-    static String browser = System.getProperty("browser", "chrome");
-    static String browserVersion = System.getProperty("browserVersion", "127.0");
-    static String browserSize = System.getProperty("browserSize", "1920x1080");
     @BeforeAll
     static void installСonfiguration() {
-
-        String selenoidUrl = System.getProperty("selenoid_host", "selenoid.autotests.cloud");
-        String selenoidLogin = System.getProperty("selenoid_login", "user1");
-        String selenoidPassword = System.getProperty("selenoid_password", "1234");
         String browser = System.getProperty("browser", "chrome");
         String browserVersion = System.getProperty("browserVersion", "127.0");
         String screenResolution = System.getProperty("screenResolution", "1920x1080");
