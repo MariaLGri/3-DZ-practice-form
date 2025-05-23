@@ -17,7 +17,7 @@ public class TestBase2 {
     static String selenoidUrl = System.getProperty(
             "selenoidUrl", "selenoid.autotests.cloud");
     static String browser = System.getProperty("browser", "chrome");
-    static String browserVersion = System.getProperty("browserVersion", "136.0.7");
+    static String browserVersion = System.getProperty("browserVersion", "135.0");
     static String browserSize = System.getProperty("browserSize", "1920x1080");
     @BeforeAll
     public static void installСonfiguration() {
