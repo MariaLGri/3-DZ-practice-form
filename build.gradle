@@ -35,7 +35,7 @@ dependencies {
 
 tasks.withType(Test) {
     useJUnitPlatform()
-
+    systemProperties(System.getProperties())//для прокидывания переменных внутрь кода из вне (jenkins)
     testLogging {
         lifecycle {
             events "started", "skipped", "failed", "standard_error", "standard_out"
@@ -47,6 +47,18 @@ tasks.withType(Test) {
 task firsti_test(type: Test) {
     useJUnitPlatform {
         includeTags("start")
+    }
+}
+
+task Properti_test(type: Test) {
+    useJUnitPlatform {
+        includeTags("Properties")
+    }
+}
+
+task start2_test(type: Test) {
+    useJUnitPlatform {
+        includeTags("start2")
     }
 }
 
