@@ -37,10 +37,12 @@ public class TestBase2 {
         Configuration.browserVersion = browserVersion;
         Configuration.pageLoadStrategy = "eager";
         Configuration.timeout = 10000;
-        Configuration.remote = String.format("https://%s:%s@%s/wd/hub",
-                System.getProperty("selenoidUserLogin"),
-                System.getProperty("selenoidUserPassword"),
-                System.getProperty("selenoidUrl") );
+        Configuration.remote = String.format(
+                "https://%s:%s@%s/wd/hub",
+                System.getProperty("selenoidUserLogin", "user1"),
+                System.getProperty("selenoidUserPassword", "1234"),
+                System.getProperty("selenoidUrl", "selenoid.autotests.cloud")
+        );
 
 
         DesiredCapabilities capabilities = new DesiredCapabilities();

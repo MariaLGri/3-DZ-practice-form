@@ -8,9 +8,6 @@ import utils.RandomUtils;
 import static io.qameta.allure.Allure.step;
 
 public class RegFormNewRandomJenktns2ParamrtrTest extends TestBase2 {
-    private static final String SELENOID_URL = System.getProperty("selenoid.url");
-    private static final String SELENOID_LOGIN = System.getProperty("selenoid.login");;
-    private static final String SELENOID_PASSWORD = System.getProperty("selenoid.password");
     RegistrationPage registrationPage = new RegistrationPage();
     RandomUtils randomUtils = new RandomUtils();
 
