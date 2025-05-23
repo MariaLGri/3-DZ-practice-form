@@ -29,8 +29,13 @@ public class TestBase2 {
         Configuration.pageLoadStrategy = "eager"; // чтоб не ждать загрузки всего сайта , картинок и т.д
         Configuration.baseUrl = "https://demoqa.com"; // выносим абсолютный адресс из опен
         //хром на стороннем сервисе
-
-        Configuration.remote = "https://" + selenoidUserLogin + ":" + selenoidUserPassword +"@" + selenoidUrl + "/wd/hub";
+        Configuration.remote = String.format(
+                "https://%s:%s@%s/wd/hub",
+                System.getProperty("selenoidUserLogin"),
+                System.getProperty("selenoidUserPassword"),
+                System.getProperty("selenoidUrl")
+        );
+        //Configuration.remote = "https://" + selenoidUserLogin + ":" + selenoidUserPassword +"@" + selenoidUrl + "/wd/hub";
         SelenideLogger.addListener("AllureSelenide", new AllureSelenide());
 // добавить видеозапись с экрана
         DesiredCapabilities capabilities = new DesiredCapabilities();
