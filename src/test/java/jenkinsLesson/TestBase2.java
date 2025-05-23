@@ -16,9 +16,9 @@ public class TestBase2 {
     static String selenoidUserPassword = System.getProperty("selenoidUserPassword", "1234");
     static String selenoidUrl = System.getProperty(
             "selenoidUrl", "selenoid.autotests.cloud");
-    static String browser = System.getProperty("browser", "Chrome");
-    static String browserVersion = System.getProperty("browserVersion", "128.0");
-    static String browserSize = System.getProperty("browserSize", "1920x1200");
+    static String browser = System.getProperty("browser", "chrome");
+    static String browserVersion = System.getProperty("browserVersion", "127.0");
+    static String browserSize = System.getProperty("browserSize", "1920x1080");
     @BeforeAll
     public static void installСonfiguration() {
 
@@ -29,6 +29,7 @@ public class TestBase2 {
         Configuration.pageLoadStrategy = "eager"; // чтоб не ждать загрузки всего сайта , картинок и т.д
         Configuration.baseUrl = "https://demoqa.com"; // выносим абсолютный адресс из опен
         //хром на стороннем сервисе
+
         Configuration.remote = "https://" + selenoidUserLogin + ":" + selenoidUserPassword +"@" + selenoidUrl + "/wd/hub";
         SelenideLogger.addListener("AllureSelenide", new AllureSelenide());
 // добавить видеозапись с экрана
