@@ -10,6 +10,8 @@ import static io.qameta.allure.Allure.step;
 public class RegFormNewRandomJenktns2ParamrtrTest extends TestBase2 {
     RegistrationPage registrationPage2 = new RegistrationPage();
     RandomUtils randomUtils = new RandomUtils();
+
+
     @Test
     @DisplayName("Проверка регистрации на форме")
     @Tag("start2")
