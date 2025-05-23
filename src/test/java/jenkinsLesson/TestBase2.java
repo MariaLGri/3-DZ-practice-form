@@ -24,7 +24,7 @@ public class TestBase2 {
     @BeforeAll
     static void installСonfiguration() {
 
-        String selenoidHost = System.getProperty("selenoid_host", "selenoid.autotests.cloud");
+        String selenoidUrl = System.getProperty("selenoid_host", "selenoid.autotests.cloud");
         String selenoidLogin = System.getProperty("selenoid_login", "user1");
         String selenoidPassword = System.getProperty("selenoid_password", "1234");
         String browser = System.getProperty("browser", "chrome");
@@ -40,7 +40,7 @@ public class TestBase2 {
         Configuration.remote = String.format("https://%s:%s@%s/wd/hub",
                 selenoidLogin,
                 selenoidPassword,
-                selenoidHost);
+                selenoidUrl);
 
 
         DesiredCapabilities capabilities = new DesiredCapabilities();
