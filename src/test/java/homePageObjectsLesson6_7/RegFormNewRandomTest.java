@@ -11,6 +11,7 @@ public class RegFormNewRandomTest extends TestBase {
     RegistrationPage registrationPage = new RegistrationPage();
     RandomUtils randomUtils = new RandomUtils();
     @Test
+    @Tag("start2")
     @DisplayName("Проверка регистрации на форме")
    // @Tag("first")
         void regFormTest()
